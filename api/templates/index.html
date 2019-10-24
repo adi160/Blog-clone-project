@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load static %}
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Redsky shipment status</title>
+<link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+<body>
+<div class="headtext">Redsky Shipment api GET,PUT,DELETE,POST query</div>
+<div class="maindiv">
+{% comment %} form1 retrive=get {% endcomment %}
+<div class="fdiv">
+<form action="{% url 'getview' %}" method="POST">
+    <label class="lb" >Enter Url: </label>
+    <input id="text1" type="text" name="_method" value="http://localhost:8000/api/ship/">
+    {% csrf_token %}
+    <input type="submit" value="GET" class="bt">
+</form>
+</div>
+{% comment %} form2 set=post {% endcomment %}
+<div class="fdiv">
+<form action="{% url 'postview' %}" method="POST">
+    <label class="lb" >Enter Url: </label>
+    <input id="text1" type="text" name="_method" value="http://localhost:8000/api/ship/"><br>
+    <input id="text2" type="text" name="data"  value='{"destination_pincode":54, "no_of_devices_shipped":1,"shipment_ID":1,"status": "delevired"}'>
+    {% csrf_token %}
+    <input type="submit" value="POST" class="bt">
+</form>
+</div>
+{% comment %} form3 update=put {% endcomment %}
+<div class="fdiv">
+<form action="{% url 'putview' %}" method="POST">
+    <label class="lb" >Enter Url: </label>
+    <input id="text1" type="text" name="_method"  value="http://localhost:8000/api/ship/8/"><br>
+    <input id="text2" type="text" name="data"  value=' {"destination_pincode":54, "no_of_devices_shipped":1,"shipment_ID":1,"status": "delevired"} '>
+    {% csrf_token %}
+    <input type="submit" value="PUT" class="bt">
+</form>
+</div>
+{% comment %} form4 delete {% endcomment %}
+<div class="fdiv">
+<form action="{% url 'deleteview' %}" method="POST">
+    <label class="lb" >Enter Url: </label>
+    <input id="text1" type="text" name="_method"  value="http://localhost:8000/api/ship/">
+    {% csrf_token %}
+    <input type="submit" value="DELETE" class="bt">
+</form>
+</div>
+
+{% comment %} <script  src="{%static "js/script.js" %}"></script> {% endcomment %}
+</div>
+</body>
+</html>
