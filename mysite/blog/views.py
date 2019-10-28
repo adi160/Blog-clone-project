@@ -31,6 +31,23 @@ class CreatePostView(LoginRequiredMixin,CreateView):
     form_class = PostForm
 
     model = Post
+    
+class NikPostView(LoginRequiredMixin,CreateView):
+    login_url = '/login/'
+    loglog="login to loglog"
+    redirect_field_name = 'blog/post_detail.html'
+
+    form_class = PostForm
+
+    model = Post
+class AdiPostView(LoginRequiredMixin,CreateView):
+    login_url = '/login/'
+    adilog="adi login log"
+    redirect_field_name = 'blog/post_detail.html'
+
+    form_class = PostForm
+
+    model = Post
 
 
 class PostUpdateView(LoginRequiredMixin,UpdateView):
